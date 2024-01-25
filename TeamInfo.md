@@ -9,7 +9,7 @@
 | Captain     |      Chenzhao Wang     |
 | Captain     |    cw107@illinois.edu  |
 | Member1     |        Keyu Cai        |
-| Member1     |   kevin2@illinois.edu  |
+| Member1     |  keyucai2@illinois.edu |
 | Member2     |      Chenyu Liao       |
 | Member2     |  chenyul5@illinois.edu |
 | Member3     |     Sizheng Zhang      |
