@@ -19,10 +19,13 @@
 
 |   Info      |        Description     |
 | ----------- | ---------------------- |
-|  Title      |       ProjectTitle     |
+|   Title     |         EaseLease      |
 | System URL  |      link_to_system    |
 | Video Link  |      link_to_video     |
 
 ## Project Summary
 
-This is a summary of the project!
+EaseLease is a transformative online subletting platform created by UIUC students to address the unique housing challenges of university graduate programs. It aims to simplify the process of finding and managing short-term leases, thereby filling a void in the traditional rental market.
+
+Landlords have access to Property Listing, Rental Management, Financial Reporting, Bidding System, and a Rewards Mechanism. For tenants, the platform provides Property Search and Filters, an Application Process, a Roommate Matching System, and the ability to Place a Bid. Collectively, these features are designed to facilitate a more efficient and user-friendly leasing process, ensuring that both landlords and tenants can navigate the rental landscape with confidence and ease.
+
