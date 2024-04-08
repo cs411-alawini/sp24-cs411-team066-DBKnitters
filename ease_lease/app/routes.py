@@ -8,8 +8,8 @@ def index():
 
 @app.route('/login', methods=['POST'])
 def login():
-    username = request.form['username']
-    password = request.form['password']
+    username = request.json.get('username')
+    password = request.json.get('password')
     if is_valid_login(username, password):
         return jsonify({'success': True})
     else:
@@ -17,10 +17,14 @@ def login():
 
 @app.route('/register', methods=['POST'])
 def register():
-    username = request.form['username']
-    password = request.form['password']
+    username = request.json.get('username')
+    password = request.json.get('password')
     if is_username_available(username):
         create_new_user(username, password)
         return jsonify({'success': True})
     else:
         return jsonify({'success': False, 'message': 'Username already exists'})
+
+@app.route('/listings', methods=['GET'])
+def listings():
+    return render_template('listings.html')
