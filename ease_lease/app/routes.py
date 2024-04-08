@@ -1,10 +1,10 @@
 from flask import render_template, request, jsonify
-from utils import is_valid_login, is_username_available, create_new_user
+from app.utils import is_valid_login, is_username_available, create_new_user
 from app import app
 
 @app.route('/')
 def index():
-    return "home page"
+    return render_template('index.html')
 
 @app.route('/login', methods=['POST'])
 def login():
