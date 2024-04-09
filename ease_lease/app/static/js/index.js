@@ -26,7 +26,8 @@ function handleLogin(event) {
       .then(data => {
         if (data.success) {
           // Login successful, redirect to the desired page
-          window.location.href = '/listings';
+          const user_id = data.user_id;
+          window.location.href = '/listings/' + user_id;
         } else {
           // Login failed, display an error message
           alert('Invalid username or password');
@@ -69,7 +70,8 @@ function handleRegistration(event) {
       .then(data => {
         if (data.success) {
           // Registration successful, redirect to the login page
-          window.location.href = '/listings';
+          const user_id = data.user_id;
+          window.location.href = '/listings/' + user_id;
         } else {
           // Registration failed, display an error message
           alert('Username already exists');
