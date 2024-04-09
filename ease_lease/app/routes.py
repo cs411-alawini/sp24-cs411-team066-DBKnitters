@@ -19,8 +19,11 @@ def login():
 def register():
     username = request.json.get('username')
     password = request.json.get('password')
+    phone_number = request.json.get('phone_number')
+    first_name = request.json.get('first_name')
+    last_name = request.json.get('last_name')
     if is_username_available(username):
-        create_new_user(username, password)
+        create_new_user(username, password, phone_number, first_name, last_name)
         return jsonify({'success': True})
     else:
         return jsonify({'success': False, 'message': 'Username already exists'})
