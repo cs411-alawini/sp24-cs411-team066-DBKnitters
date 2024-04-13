@@ -1,5 +1,5 @@
 from flask import render_template, request, jsonify
-from app.utils import is_valid_login, is_username_available, create_new_user, get_user_id, get_user_info
+from utils.account_utils import is_valid_login, is_username_available, create_new_user, get_user_id, get_user_info
 from app import app
 
 @app.route('/')
@@ -33,5 +33,5 @@ def register():
 @app.route('/listings/<int:user_id>', methods=['GET'])
 def listings(user_id):
     user_info = get_user_info(user_id)
-    print(user_info)
+    # print(user_info)
     return render_template('listings.html', user = user_info)
