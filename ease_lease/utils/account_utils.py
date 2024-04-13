@@ -1,4 +1,4 @@
-from app.database import execute_query
+from .database import execute_query
 
 def is_valid_login(username, password):
     SQL_QUERY = "SELECT * FROM User WHERE user_name = %s AND password = %s"
