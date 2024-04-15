@@ -1,12 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Ease Lease - Listings</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/listings.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Properties</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        ul {
+            list-style-type: none;
+        }
+        li {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
 <body>
-    <h1>Listings</h1>
-    <h1>Welcome, {{ user['first_name'] }} {{ user['last_name'] }}</h1>
-    <script src="{{ url_for('static', filename='js/listings.js') }}"></script>
+    <h1>Top Properties</h1>
+    <ul>
+        {% for listing in listings %}
+            <li>
+                <h2>{{ listing['latest_room_type'] }}</h2>
+                <p>Description: {{ listing['latest_description'] }}</p>
+                <p>Average Rating: {{ listing['avg_scores_rating'] }}</p>
+                <p>Available from: {{ listing['earliest_from_date'] }} to {{ listing['latest_to_date'] }}</p>
+            </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
