@@ -4,31 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top Properties</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        ul {
-            list-style-type: none;
-        }
-        li {
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/listings.css') }}">
 </head>
-<body>
+<br>
     <h1>Top Properties</h1>
-    <ul>
+
+    <form id="filter-form">
+        <label for="max_price">Maximum Price:</label>
+        <input type="number" id="max_price" name="max_price">
+      
+        <label for="room_type">Room Type:</label>
+        <select id="room_type" name="room_type">
+          <option value="Private room">Private room</option>
+          <option value="Entire home/apt">Entire home/apt</option>
+          <option value="Shared room">Shared room</option>
+          <option value="Hotel room">Hotel room</option>
+        </select>
+      
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date">
+      
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date">
+
+        <label for="min_rating">Minimum Rating:</label>
+        <input type="number" id="min_rating" name="min_rating">
+      
+        <button type="submit">Filter</button>
+    </form>
+    <br></br>
+    <ul id = "listings-container">
         {% for listing in listings %}
             <li>
-                <h2>{{ listing['latest_room_type'] }}</h2>
-                <p>Description: {{ listing['latest_description'] }}</p>
-                <p>Average Rating: {{ listing['avg_scores_rating'] }}</p>
-                <p>Available from: {{ listing['earliest_from_date'] }} to {{ listing['latest_to_date'] }}</p>
+                <h2>{{ listing['room_type'] }}</h2>
+                <p>Description: {{ listing['description'] }}</p>
+                <p>Rating: {{ listing['scores_rating'] }}</p>
+                <p>Price: ${{ listing['price'] }}</p>
+                <p>Available from: {{ listing['from_date'] }} to {{ listing['to_date'] }}</p>
             </li>
         {% endfor %}
     </ul>
+    <script src="{{ url_for('static', filename='js/listings.js') }}"></script>
 </body>
 </html>
