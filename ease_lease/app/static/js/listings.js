@@ -1,4 +1,4 @@
-document.getElementById('filter-form').addEventListener('submit', function(event) {
+document.getElementById('search-filter-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
     const formData = new FormData(this);

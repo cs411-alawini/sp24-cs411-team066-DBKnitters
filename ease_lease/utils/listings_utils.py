@@ -16,9 +16,16 @@ def get_top_listings():
     """
     return execute_query(SQL_QUERY)
 
-def get_filtered_listings(max_price, room_type, start_date, end_date, min_rating):
-    SQL_QUERY = "SELECT li.listing_id, room_type, description, price, from_date, to_date, scores_rating FROM Listing li JOIN Rating r ON li.listing_id = r.listing_id WHERE 1=1"
+def get_filtered_listings(search_query, max_price, room_type, start_date, end_date, min_rating):
+    SQL_QUERY = """
+    SELECT li.listing_id, room_type, description, price, from_date, to_date, scores_rating 
+    FROM Listing li 
+    JOIN Rating r ON li.listing_id = r.listing_id 
+    WHERE 1=1"""
     params = []
+    if search_query:
+        SQL_QUERY += " AND description LIKE %s"
+        params.append(f"%{search_query}%")
     if max_price:
         SQL_QUERY += " AND price <= %s"
         params.append(max_price)

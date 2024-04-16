@@ -4,12 +4,13 @@ from app import app
 @app.route('/listings', methods=['GET'])
 def listings():
     if request.args:
+        search_query = request.args.get('search_input','')
         max_price = request.args.get('max_price')
         room_type = request.args.get('room_type')
         start_date = request.args.get('start_date')
         end_date = request.args.get('end_date')
         min_rating = request.args.get('min_rating')
-        filtered_listings = get_filtered_listings(max_price, room_type, start_date, end_date, min_rating)
+        filtered_listings = get_filtered_listings(search_query, max_price, room_type, start_date, end_date, min_rating)
         for listing in filtered_listings:
             listing['from_date'] = listing['from_date'].strftime('%Y-%m-%d')
             listing['to_date'] = listing['to_date'].strftime('%Y-%m-%d')
