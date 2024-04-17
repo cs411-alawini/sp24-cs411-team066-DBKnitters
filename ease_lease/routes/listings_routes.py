@@ -1,9 +1,13 @@
 from flask import render_template, request, jsonify
-from utils.listings_utils import get_top_listings, get_filtered_listings
+from utils.listings_utils import get_top_listings, get_filtered_listings, get_searched_listings
 from app import app 
 @app.route('/listings', methods=['GET'])
 def listings():
-    if request.args:
+    search_input = request.args.get('search_input', '')
+    if search_input:
+        searched_listings = get_searched_listings(search_input)
+        return jsonify(searched_listings)
+    elif not search_input and request.args:
         max_price = request.args.get('max_price')
         room_type = request.args.get('room_type')
         start_date = request.args.get('start_date')

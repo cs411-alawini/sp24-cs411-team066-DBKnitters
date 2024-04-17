@@ -32,7 +32,16 @@
       
         <button type="submit">Filter</button>
     </form>
-    <br></br>
+
+    <form id = "search-form">
+        <label for = "search_input">Search Keyword:</label>
+        <input type = "text" id = "search_input" name = "search_input" placeholder="Search listings' descriptions">
+        
+        <button type = "submit">Search</button>
+    </form>
+
+
+    <br>
     <ul id = "listings-container">
         {% for listing in listings %}
             <li>

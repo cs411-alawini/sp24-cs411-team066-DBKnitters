@@ -37,3 +37,24 @@ def get_filtered_listings(max_price, room_type, start_date, end_date, min_rating
     SQL_QUERY += " LIMIT 10"
     result = execute_query(SQL_QUERY, params)
     return result
+
+def get_searched_listings(keyword):
+    SQL_QUERY = """
+    SELECT 
+        li.listing_id, room_type, description, price, from_date, to_date, scores_rating 
+    FROM 
+        Listing li 
+    JOIN 
+        Rating r 
+    ON 
+        li.listing_id = r.listing_id 
+    WHERE 
+        1 = 1
+    """
+    params = []
+    if keyword:
+        SQL_QUERY += "AND description LIKE %s"
+        params.append(f"%{keyword}%")
+    SQL_QUERY += " ORDER BY scores_rating DESC LIMIT 10"
+    result = execute_query(SQL_QUERY, params)
+    return result
