@@ -1,0 +1,11 @@
+body {
+    font-family: Arial, sans-serif;
+}
+ul {
+    list-style-type: none;
+}
+li {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}

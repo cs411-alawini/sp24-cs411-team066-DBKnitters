@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listing Details</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/listings_detail.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Listing Details</h1>
+    </header>
+    <main>
+        <section id = 'detail'>
+            
+            <p>Description: {{ listings_detail[0].description }}</p>
+            <p>Room Type: {{ listings_detail[0].room_type}}</p>
+            <p>Price: {{listings_detail[0].price}}</p>
+            <p>From Date: {{ listings_detail[0].from_date }}</p>
+            <p>To Date: {{ listings_detail[0].to_date }}</p>
+            <p>Location: {{ listings_detail[0].longitude }}, {{ listings_detail[0].latitude }}</p>
+
+        </section>
+
+        <section id = 'rating'>
+
+            <h2>Recent Anonymous Ratings</h2>
+            <ul id = 'rating container'>
+                {% for rating in listings_rating %}
+                <li class = 'rating'>
+                    <p>Overall: {{ rating.scores_rating }}</p>
+                    <p>Description Accuracy: {{ rating.scores_accuracy }}</p>
+                    <p>Room Cleanliness: {{ rating.scores_cleanliness}}</p>
+                    <p>Check-in: {{ rating.scores_checkin }}</p>
+                    <p>Communication: {{ rating.scores_communication }}</p>
+                    <p>Location: {{ rating.scores_location }}</p>
+                    <p>Value: {{ rating.scores_value }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+
+        </section>
+
+        <section id = 'review'>
+
+            <h2>Recent Customer Reviews</h2>
+            <ul id = 'review container'>
+                {% for review in listings_review %}
+                <li class = 'review'>
+                    <p>Name: {{ review.reviewer_name }}</p>
+                    <p>Comment: {{ review.content }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+
+        </section>
+
+    </main>
+    <script src="{{ url_for('static', filename='js/listings_detail.js') }}"></script>
+</body>
+
+</html>
