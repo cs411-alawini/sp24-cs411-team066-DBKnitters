@@ -38,7 +38,8 @@
     <br></br>
     <ul id = "listings-container">
         {% for listing in listings %}
-            <li>
+            <!-- <li> -->
+            <li class = 'listing' data-id = "{{ listing.listing_id }}">
                 <h2>{{ listing['room_type'] }}</h2>
                 <p>Description: {{ listing['description'] }}</p>
                 <p>Rating: {{ listing['scores_rating'] }}</p>
