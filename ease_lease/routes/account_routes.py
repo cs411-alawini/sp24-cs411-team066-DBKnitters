@@ -13,6 +13,9 @@ def login():
     login_type = request.json.get('login_type')
     if is_valid_login(username, password):
         user_id = get_user_id(username, password)
+        user_info = get_user_info(user_id)
+        session['user_name'] = user_info['user_name']
+        session['phone_number'] = user_info['phone_number']
         session['user_id'] = user_id
         session['login_type'] = login_type
         return jsonify({'success': True, 'user_id': user_id})
