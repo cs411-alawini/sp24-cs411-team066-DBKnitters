@@ -1,26 +1,23 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const applicationForm = document.getElementById('application-form');
+    const currentPriceInput = document.getElementById('current_price');
+    const bidPriceInput = document.getElementById('bid_price');
 
+    applicationForm.addEventListener('submit', (event) => {
+        const currentPrice = parseInt(currentPriceInput.value);
+        const userBid = parseInt(bidPriceInput.value);
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     fetchListingDetails();
+        // Validate the bid before submitting
+        if (bidPriceInput.value && (!isNaN(userBid) && userBid <= currentPrice)) {
+            alert('Your bid must be higher than the current price.');
+            bidPriceInput.value = currentPrice + 1;
+            event.preventDefault(); // Prevent form from submitting
+        }
+    });
 
-//     function fetchListingDetails() {
-//         const listing_id = 2384; // The known listing ID
-//         // Fetching details from the server using the listing ID
-//         fetch(`/api/listing-details?id=${listing_id}`)
-//             .then(response => response.json())
-//             .then(data => updatePageWithListingDetails(data))
-//             .catch(error => console.error('Error fetching listing details:', error));
-//     }
-
-//     function updatePageWithListingDetails(listing) {
-//         document.getElementById('listing_id').textContent = listing.listing_id;
-//         document.getElementById('room_type').textContent = listing.room_type;
-//         document.getElementById('description').textContent = listing.description;
-//         document.getElementById('price').textContent = listing.price;
-//         document.getElementById('from_date').textContent = listing.from_date;
-//         document.getElementById('to_date').textContent = listing.to_date;
-//         document.getElementById('landlord_id').textContent = listing.landlord_id;
-//         document.getElementById('longitude').textContent = listing.longitude;
-//         document.getElementById('latitude').textContent = listing.latitude;
-//     }
-// });
+    const applyButton = document.getElementById('apply-btn');
+    const applicationSection = document.getElementById('application-section');
+    applyButton.addEventListener('click', () => {
+        applicationSection.style.display = 'block';
+    });
+});

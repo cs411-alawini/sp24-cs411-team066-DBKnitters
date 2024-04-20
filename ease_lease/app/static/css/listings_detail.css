@@ -9,3 +9,13 @@ li {
     padding: 10px;
     border: 1px solid #ccc;
 }
+.alert {
+    padding: 10px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin-bottom: 15px;
+}
+
+.alert-info {
+    background-color: #2196F3; /* Blue */
+}
