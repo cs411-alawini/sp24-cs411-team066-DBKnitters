@@ -2,11 +2,11 @@ from flask import render_template, request, jsonify, session, flash, redirect, u
 from utils.listings_detail_utils import (get_listings_detail, 
                                          get_listings_review, 
                                          get_listings_rating, 
-                                         submit_application_and_bid
-                                         #insert_application, 
-                                         #insert_bid
+                                         submit_application_and_bid,
+                                         submit_feedback
                                          )
 from app import app 
+
 
 @app.route('/listings_detail/<int:listing_id>')
 def listings_detail(listing_id):
@@ -24,6 +24,7 @@ def listings_detail(listing_id):
     else:
         return jsonify({'error': 'Listing ID is required'}), 400
     
+
 @app.route('/submit_application_route', methods=['POST'])
 def submit_application_route():
     user_id = session.get('user_id')
@@ -39,27 +40,27 @@ def submit_application_route():
     return redirect(url_for('listings_detail', listing_id=listing_id))
 
 
+@app.route('/submit_feedback_route/<int:listing_id>', methods=['POST'])
+def submit_feedback_route(listing_id):
+    user_id = session.get('user_id')  
+    scores_rating = request.form.get('scores_rating')
+    scores_accuracy = request.form.get('scores_accuracy')
+    scores_cleanliness = request.form.get('scores_cleanliness')
+    scores_checkin = request.form.get('scores_checkin')
+    scores_communication = request.form.get('scores_communication')
+    scores_location = request.form.get('scores_location')
+    scores_value = request.form.get('scores_value')
+    reviewer_name = session.get('user_name', 'Anonymous')
+    content = request.form.get('review')
 
-# def submit_application():
-#     user_id = request.form['user_id']
-#     listing_id = request.form['listing_id']
-#     bid_price = request.form.get('bid_price')
-#     current_price = int(request.form['current_price'])
+    try:
+        # Call the utility function to execute the stored procedure
+        submit_feedback(user_id, listing_id, scores_rating, scores_accuracy, scores_cleanliness, scores_checkin, scores_communication, scores_location, scores_value, reviewer_name, content)
+        flash('Your feedback has been successfully submitted.', 'success')
+    except Exception as e:
+        # Catch any exceptions raised by the stored procedure
+        flash(str(e), 'error')
 
-#     insert_application(listing_id, user_id)
-
-#     if bid_price and bid_price.strip():
-#         bid_price = int(bid_price)
-#         if bid_price > current_price:
-#             insert_bid(listing_id, user_id, bid_price)
-#         else:
-#             flash('Your bid must be higher than the current price.')
-#             return redirect(url_for('listings_detail',listing_id = listing_id))
-        
-#     flash('Your application has been submitted.')
-#     return redirect(url_for('listings_detail', listing_id = listing_id))
-
-        
-
+    return redirect(url_for('listings_detail', listing_id=listing_id))
 
 
