@@ -45,6 +45,7 @@
                 <p>Rating: {{ listing['scores_rating'] }}</p>
                 <p>Price: ${{ listing['price'] }}</p>
                 <p>Available from: {{ listing['from_date'] }} to {{ listing['to_date'] }}</p>
+                <button onclick = "location.href = '/listings_detail/{{listing.listing_id}}'">View Details</button>
             </li>
         {% endfor %}
     </ul>
