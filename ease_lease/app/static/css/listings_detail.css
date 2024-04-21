@@ -4,7 +4,6 @@ body {
     line-height: 1.6;
 }
 
-
 /* Utility Classes */
 .required::after {
     content: '*';
@@ -35,7 +34,6 @@ body {
 #detail button:hover {
     background: #555;
 }
-
 
 /* Form Layout */
 .form-section {
@@ -115,11 +113,12 @@ body {
 }
 
 .alert-success {
-    background-color: #4CAF50; 
+    background-color: #4CAF50;
 }
 
 .alert-info {
     background-color: #2196F3;
+}
 
 .alert-error {
     background-color: #f44336;
@@ -139,7 +138,6 @@ body {
     margin-bottom: 20px;
 }
 
-
 #rating ul, #review ul {
     list-style-type: none;
     padding-left: 0;
@@ -149,5 +147,4 @@ body {
     margin-bottom: 20px;
     padding: 10px;
     border: 1px solid #ccc;
-}
 }
