@@ -20,29 +20,124 @@
             {% endif %}
         {% endwith %}
 
-        <section id = 'detail'>
-            
-            <p>Description: {{ listings_detail[0].description }}</p>
-            <p>Room Type: {{ listings_detail[0].room_type}}</p>
-            <p>Price: {{listings_detail[0].price}}</p>
-            <p>From Date: {{ listings_detail[0].from_date }}</p>
-            <p>To Date: {{ listings_detail[0].to_date }}</p>
-            <p>Location: {{ listings_detail[0].longitude }}, {{ listings_detail[0].latitude }}</p>
-            <button id="apply-btn">Apply</button>
+        <section id="detail" class="form-section">
+            <div class="detail-container">
+                <div class="form-row">
+                    <label><strong>Description:</strong></label>
+                    <span>{{ listings_detail[0].description }}</span>
+                </div>
+                <div class="form-row">
+                    <label><strong>Room Type:</strong></label>
+                    <span>{{ listings_detail[0].room_type }}</span>
+                </div>
+                <div class="form-row">
+                    <label><strong>Price:</strong></label>
+                    <span>{{ listings_detail[0].price }}</span>
+                </div>
+                <div class="form-row">
+                    <label><strong>From Date:</strong></label>
+                    <span>{{ listings_detail[0].from_date }}</span>
+                </div>
+                <div class="form-row">
+                    <label><strong>To Date:</strong></label>
+                    <span>{{ listings_detail[0].to_date }}</span>
+                </div>
+                <div class="form-row">
+                    <label><strong>Location:</strong></label>
+                    <span>{{ listings_detail[0].longitude }}, {{ listings_detail[0].latitude }}</span>
+                </div>
+                <div class="form-row">
+                    <button id="apply-btn" class="form-btn">Apply</button>
+                </div>
+            </div>
         </section>
+        
 
-        <div id="application-section" style="display:none;">
+        <div id="application-section" class="form-section" style="display:none;">
             <form id="application-form" action="{{ url_for('submit_application_route') }}" method="post">
-                User Name: <input type="text" value="{{ session['user_name'] }}" readonly>
-                Phone Number:  <input type="text" value="{{ session['phone_number'] }}" readonly>
-                User ID: <input type="text" name='user_id' id='user_id' value="{{ session['user_id'] }}" readonly>
-                Listing ID: <input type="text" name='listing_id' id='listing_id' value="{{ listings_detail[0].listing_id }}" readonly>
-                Current Price: <input type="text" name='current_price' id='current_price' value="{{ listings_detail[0].price }}" readonly>
-                Your Bid(optional): <input type="text" name="bid_price" id="bid_price" placeholder="Enter your bid" title="Your bid must be higher than the current price.">
-                <button type="button" id="confirm-bid-btn">Confirm Bid</button>
-                <button type="submit">Submit Application</button>
+                <h3>Submit Your Application</h3>
+
+                <div class="form-row">
+                    <label>User Name:</label>
+                    <input type="text" value="{{ session['user_name'] }}" readonly>
+                </div>
+                <div class="form-row">
+                    <label>Phone Number:</label>
+                    <input type="text" value="{{ session['phone_number'] }}" readonly>
+                </div>
+                <div class="form-row">
+                    <label>User ID:</label>
+                    <input type="text" name='user_id' id='user_id' value="{{ session['user_id'] }}" readonly>
+                </div>
+                <div class="form-row">
+                    <label>Listing ID:</label>
+                    <input type="text" name='listing_id' id='listing_id' value="{{ listings_detail[0].listing_id }}" readonly>
+                </div>
+                <div class="form-row">
+                    <label>Current Price:</label>
+                    <input type="text" name='current_price' id='current_price' value="{{ listings_detail[0].price }}" readonly>
+                </div>
+                <div class="form-row">
+                    <label>Your Bid (optional):</label>
+                    <input type="text" name="bid_price" id="bid_price" placeholder="Enter your bid" title="Your bid must be higher than the current price.">
+                </div>
+                <!--<button type="button" id="confirm-bid-btn">Confirm Bid</button>-->
+                <div class="form-row">
+                    <button type="submit" class="form-btn">Submit Application</button>
+                </div>
             </form>
         </div>
+        <br>
+        
+        <button id="give-feedback-btn" class="form-btn">Give Your Feedback</button>
+
+        <div id="feedback-form" class="form-section" style="display: none;">
+            <form id="feedback-form-element" action="{{ url_for('submit_feedback_route', listing_id=listings_detail[0].listing_id) }}" method="post">
+                <h3>Submit Your Feedback</h3>
+        
+                <div class="form-row">
+                    <label for="scores_rating" class="required">Overall Rating:</label>
+                    <input type="number" step="0.1" min="0" max="5" name="scores_rating" required>
+                </div>
+                <div class="form-row">
+                    <label for="scores_accuracy" class="required">Accuracy of Description:</label>
+                    <input type="number" step="0.1" min="0" max="5" name="scores_accuracy" required>
+                </div>
+                <div class="form-row">
+                    <label for="scores_cleanliness" class="required">Cleanliness:</label>
+                    <input type="number" step="0.1" min="0" max="5" name="scores_cleanliness" required>
+                </div>
+                <div class="form-row">
+                    <label for="scores_checkin" class="required">Check-in Experience:</label>
+                    <input type="number" step="0.1" min="0" max="5" name="scores_checkin" required>
+                </div>
+                <div class="form-row">
+                    <label for="scores_communication" class="required">Communication:</label>
+                    <input type="number" step="0.1" min="0" max="5" name="scores_communication" required>
+                </div>
+                <div class="form-row">
+                    <label for="scores_location" class="required">Location:</label>
+                    <input type="number" step="0.1" min="0" max="5" name="scores_location" required>
+                </div>
+                <div class="form-row">
+                    <label for="scores_value" class="required">Value for Money:</label>
+                    <input type="number" step="0.1" min="0" max="5" name="scores_value" required>
+                </div>
+                <div class="form-row">
+                    <label for="user_name" class="required">Your Name:</label>
+                    <input type="text" id="user_name" name="user_name" value="{{ session['user_name'] }}" readonly>
+                </div>
+                <div class="form-row">
+                    <label for="review" class="required">Your review:</label>
+                    <textarea id="review" name="review" rows="4" placeholder="Write your review here..." required></textarea>
+                </div>
+                <div class="form-row">
+                    <input type="submit" class="form-btn" value="Submit Feedback">
+                </div>
+            </form>
+        </div>
+        
+        <br>
         
 
         <section id = 'rating'>
@@ -51,13 +146,13 @@
             <ul id = 'rating container'>
                 {% for rating in listings_rating %}
                 <li class = 'rating'>
-                    <p>Overall: {{ rating.scores_rating }}</p>
-                    <p>Description Accuracy: {{ rating.scores_accuracy }}</p>
-                    <p>Room Cleanliness: {{ rating.scores_cleanliness}}</p>
-                    <p>Check-in: {{ rating.scores_checkin }}</p>
-                    <p>Communication: {{ rating.scores_communication }}</p>
-                    <p>Location: {{ rating.scores_location }}</p>
-                    <p>Value: {{ rating.scores_value }}</p>
+                    <p><strong>Overall:</strong> {{ rating.scores_rating }}</p>
+                    <p><strong>Description Accuracy:</strong> {{ rating.scores_accuracy }}</p>
+                    <p><strong>Room Cleanliness:</strong> {{ rating.scores_cleanliness }}</p>
+                    <p><strong>Check-in:</strong> {{ rating.scores_checkin }}</p>
+                    <p><strong>Communication:</strong> {{ rating.scores_communication }}</p>
+                    <p><strong>Location:</strong> {{ rating.scores_location }}</p>
+                    <p><strong>Value:</strong> {{ rating.scores_value }}</p>
                 </li>
                 {% endfor %}
             </ul>
@@ -70,8 +165,8 @@
             <ul id = 'review container'>
                 {% for review in listings_review %}
                 <li class = 'review'>
-                    <p>Name: {{ review.reviewer_name }}</p>
-                    <p>Comment: {{ review.content }}</p>
+                    <p><strong>Name:</strong> {{ review.reviewer_name }}</p>
+                    <p><strong>Comment:</strong> {{ review.content }}</p>
                 </li>
                 {% endfor %}
             </ul>

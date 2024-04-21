@@ -68,3 +68,85 @@ def execute_query(query, params=None):
 # END$$
 
 # DELIMITER ;
+
+
+
+# stored procedure for check number of user submissions (transaction) and submit review and rating
+# DELIMITER $$
+
+# CREATE PROCEDURE `submitFeedback`(
+#     IN p_user_id INT,
+#     IN p_listing_id INT,
+#     IN p_scores_rating DECIMAL(10,2),
+#     IN p_scores_accuracy DECIMAL(10,2),
+#     IN p_scores_cleanliness DECIMAL(10,2),
+#     IN p_scores_checkin DECIMAL(10,2),
+#     IN p_scores_communication DECIMAL(10,2),
+#     IN p_scores_location DECIMAL(10,2),
+#     IN p_scores_value DECIMAL(10,2),
+#     IN p_reviewer_name VARCHAR(255),
+#     IN p_content TEXT
+# )
+# proc_exit: BEGIN -- Define a label for the BEGIN ... END block
+
+#     DECLARE existingFeedbackCount INT;
+
+#     -- Start transaction
+#     START TRANSACTION;
+
+#     -- If the user is not anonymous, check for existing feedback
+#     IF p_user_id != 1 THEN
+#         SELECT COUNT(*) INTO existingFeedbackCount
+#         FROM Rating
+#         WHERE user_id = p_user_id AND listing_id = p_listing_id;
+
+#         IF existingFeedbackCount > 0 THEN
+#             -- If feedback already exists, rollback and signal an error
+#             ROLLBACK;
+#             SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'You have already submitted feedback for this listing.';
+#             LEAVE proc_exit; -- Exit the procedure using the label
+#         END IF;
+#     END IF;
+
+#     -- Insert rating
+#     INSERT INTO Rating (
+#         user_id,
+#         listing_id,
+#         scores_rating,
+#         scores_accuracy,
+#         scores_cleanliness,
+#         scores_checkin,
+#         scores_communication,
+#         scores_location,
+#         scores_value
+#     ) VALUES (
+#         p_user_id,
+#         p_listing_id,
+#         p_scores_rating,
+#         p_scores_accuracy,
+#         p_scores_cleanliness,
+#         p_scores_checkin,
+#         p_scores_communication,
+#         p_scores_location,
+#         p_scores_value
+#     );
+
+#     -- Insert review
+#     INSERT INTO Review (
+#         user_id,
+#         listing_id,
+#         reviewer_name,
+#         content
+#     ) VALUES (
+#         p_user_id,
+#         p_listing_id,
+#         p_reviewer_name,
+#         p_content
+#     );
+
+#     -- If both inserts succeeded, commit the transaction
+#     COMMIT;
+
+# END$$ -- End of the labeled block
+
+# DELIMITER ;

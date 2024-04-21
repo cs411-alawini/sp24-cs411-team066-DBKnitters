@@ -49,23 +49,7 @@ def get_listings_rating(listing_id):
     return result
 
 
-# def insert_application(listing_id, tenant_id, status='Pending'):
-#     SQL_QUERY = """
-#     INSERT INTO Application (status, listing_id, tenant_id)
-#     VALUES (%s, %s, %s)
-#     """
-#     execute_query(SQL_QUERY, (status, listing_id, tenant_id))
-
-
-# def insert_bid(listing_id, tenant_id, bid_price):
-#     SQL_QUERY = """
-#     INSERT INTO Bidding (bid_price, bid_time, listing_id, tenant_id)
-#     VALUES (%s, %s, %s, %s)
-#     """
-#     execute_query(SQL_QUERY, (bid_price, datetime.now(), listing_id, tenant_id))
-
-
-#test stored procedure
+#related to the stored procedure for inserting data into applicaton and bidding
 def submit_application_and_bid(user_id, listing_id, bid_price=None, status='Pending'):
     connection = get_db_connection()
     try:
@@ -76,3 +60,19 @@ def submit_application_and_bid(user_id, listing_id, bid_price=None, status='Pend
         raise e  
     finally:
         connection.close()
+
+
+#related to the stored procedure and transaction for correctly inserting data into rating and review
+def submit_feedback(user_id, listing_id, scores_rating, scores_accuracy, scores_cleanliness, scores_checkin, scores_communication, scores_location, scores_value, reviewer_name, content):
+    connection = get_db_connection()
+    try:
+        with connection.cursor() as cursor:
+            cursor.callproc('submitFeedback', [user_id, listing_id, scores_rating, scores_accuracy, scores_cleanliness, scores_checkin, scores_communication, scores_location, scores_value, reviewer_name, content])
+            connection.commit()
+            return True  
+    except Exception as e:
+        connection.rollback() 
+        raise e  
+    finally:
+        connection.close()
+
