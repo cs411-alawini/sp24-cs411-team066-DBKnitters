@@ -1,26 +1,35 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const applicationForm = document.getElementById('application-form');
+    const currentPriceInput = document.getElementById('current_price');
+    const bidPriceInput = document.getElementById('bid_price');
+    const applyButton = document.getElementById('apply-btn');
+    const applicationSection = document.getElementById('application-section');
+    const feedbackButton = document.getElementById('give-feedback-btn');
 
+    // Application bid logic
+    applicationForm.addEventListener('submit', (event) => {
+        const currentPrice = parseInt(currentPriceInput.value, 10);
+        const userBid = parseInt(bidPriceInput.value, 10);
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     fetchListingDetails();
+        if (bidPriceInput.value && (!isNaN(userBid) && userBid <= currentPrice)) {
+            alert('Your bid must be higher than the current price.');
+            bidPriceInput.value = ''; // Clear the input for user to enter a new bid
+            event.preventDefault(); // Prevent form from submitting
+        }
+    });
 
-//     function fetchListingDetails() {
-//         const listing_id = 2384; // The known listing ID
-//         // Fetching details from the server using the listing ID
-//         fetch(`/api/listing-details?id=${listing_id}`)
-//             .then(response => response.json())
-//             .then(data => updatePageWithListingDetails(data))
-//             .catch(error => console.error('Error fetching listing details:', error));
-//     }
+    // Apply section toggle
+    applyButton.addEventListener('click', () => {
+        if (applicationSection.style.display === 'block') {
+            applicationSection.style.display = 'none';
+        } else {
+            applicationSection.style.display = 'block';
+        }
+    });
 
-//     function updatePageWithListingDetails(listing) {
-//         document.getElementById('listing_id').textContent = listing.listing_id;
-//         document.getElementById('room_type').textContent = listing.room_type;
-//         document.getElementById('description').textContent = listing.description;
-//         document.getElementById('price').textContent = listing.price;
-//         document.getElementById('from_date').textContent = listing.from_date;
-//         document.getElementById('to_date').textContent = listing.to_date;
-//         document.getElementById('landlord_id').textContent = listing.landlord_id;
-//         document.getElementById('longitude').textContent = listing.longitude;
-//         document.getElementById('latitude').textContent = listing.latitude;
-//     }
-// });
+    // Toggle feedback form display
+    feedbackButton.addEventListener('click', () => {
+        const feedbackForm = document.getElementById('feedback-form');
+        feedbackForm.style.display = feedbackForm.style.display === 'none' ? 'block' : 'none';
+    });
+});
