@@ -23,13 +23,29 @@ function handleLogin(event) {
       body: JSON.stringify(loginData)
     })
       .then(response => response.json())
+      // .then(data => {
+      //   if (data.success) {
+      //     // Login successful, redirect to the desired page
+      //     window.location.href = '/listings';
+      //   } else {
+      //     // Login failed, display an error message
+      //     alert('Invalid username or password');
+      //   }
+      // })
+      // .catch(error => {
+      //   console.error('Error:', error);
+      // });
       .then(data => {
         if (data.success) {
-          // Login successful, redirect to the desired page
-          window.location.href = '/listings';
-        } else {
-          // Login failed, display an error message
-          alert('Invalid username or password');
+          // check the user type and redirect accordingly
+          if (login_type === 'tenant') {
+            window.location.href = '/listings'; //Redirect tenant to listings page
+          } else if (login_type === 'landlord') {
+            window.location.href = `/landlord_profile/${data.user_id}`; // Redirect landlord to landlord profile 
+          } else {
+            // Login failed, display an error message
+            alert('Invalid username or password');
+          }
         }
       })
       .catch(error => {
