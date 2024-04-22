@@ -17,5 +17,4 @@ def listings():
         return jsonify(filtered_listings)
     else:
         top_listings = get_top_listings()
-        print(top_listings)
         return render_template('listings.html', listings=top_listings)

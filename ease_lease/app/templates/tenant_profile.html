@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tenant Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            padding: 20px;
+            max-width: 960px;
+        }
+        header {
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .profile {
+            padding: 20px 0;
+        }
+        .profile h1 {
+            margin: 0;
+            color: #333;
+            font-size: 24px;
+        }
+        .profile p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+        .review {
+            border: 1px solid #eaeaea;
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .review:last-child {
+            margin-bottom: 0;
+        }
+        .review h3 {
+            margin-top: 0;
+        }
+        .review p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Top Properties</h1>
+            <div>
+                <!-- Search and other filters can go here -->
+            </div>
+        </header>
+
+        <section class="profile">
+            <h1>Welcome, {{ user_info['first_name'] }} {{ user_info['last_name'] }}</h1>
+            <p><strong>ID:</strong> {{ user_info['user_id'] }}</p>
+            <p><strong>Phone:</strong> {{ user_info['phone_number'] }}</p>
+            <p><strong>Balance:</strong> ${{ user_info['account_balance'] }}</p>
+        </section>
+
+        <section>
+            <h2>Reviews</h2>
+            {% for review in reviews %}
+                <article class="review">
+                    <h3>{{ review['reviewer_name'] }}</h3>
+                    <p>{{ review['content'] }}</p>
+                </article>
+            {% else %}
+                <p>No reviews found.</p>
+            {% endfor %}
+        </section>
+    </div>
+</body>
+</html>
