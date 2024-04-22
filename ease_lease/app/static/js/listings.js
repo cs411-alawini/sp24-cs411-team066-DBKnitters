@@ -19,11 +19,16 @@ document.getElementById('search-filter-form').addEventListener('submit', functio
       const listingElement = document.createElement('li');
       listingElement.innerHTML = `
         <h2>${listing.room_type}</h2>
-        <p>Description: ${listing.description}</p>
-        <p>Rating: ${listing.scores_rating}</p>
-        <p>Price $: ${listing.price}</p>
-        <p>Available from: ${listing.from_date} to ${listing.to_date}</p>
+        <p><strong>Description: </strong>${listing.description}</p>
+        <p><strong>Rating: </strong>${listing.scores_rating}</p>
+        <p><strong>Price: </strong>$${listing.price}</p>
+        <p><strong>Available from: </strong>${listing.from_date} to ${listing.to_date}</p>
+        <button onclick = 'viewDetails(${listing.listing_id})'>View Details</button>
     `;
       listingsContainer.appendChild(listingElement);
     });
   }
+
+  function viewDetails(listing_id) {
+    window.location.href = '/listings_detail/' + listing_id;
+}
