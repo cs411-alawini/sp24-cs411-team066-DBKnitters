@@ -1,12 +1,37 @@
 
 body {
     font-family: Arial, sans-serif;
+    line-height: 1.6;
 }
 ul {
     list-style-type: none;
 }
 li {
-    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 1px;
+}
+
+.button {
+    background-color: #555;
+    color: #fff;
     padding: 10px;
-    border: 1px solid #ccc;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+h2 {
+    margin-top: 0px;
+    color: #333;
+    padding-top: 5px;
+    margin-bottom: 0px;
+}
+
+p {
+    color: #333;
+    line-height: 1.6;
 }
