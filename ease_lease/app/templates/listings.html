@@ -6,13 +6,17 @@
     <title>Top Properties</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/listings.css') }}">
 </head>
-<br>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a class="nav-link" href="{{ url_for('tenant_profile', user_id=session['user_id']) }}">My Profile</a>
+        </div>
+    </nav>
+    <div class="main-content">
     <h1>Top Properties</h1>
-
     <form id="search-filter-form">
         <label for="search_input">Search:</label>
         <input type="text" id="search_input" name="search_input" placeholder="Search Listings">
-        <br>
         <label for="max_price">Maximum Price:</label>
         <input type="number" id="max_price" name="max_price">
       
@@ -36,6 +40,7 @@
         <button type="submit">Search and Filter</button>
     </form>
     <br>
+
     <ul id = "listings-container">
         {% for listing in listings %}
             <!-- <li> -->
@@ -50,5 +55,6 @@
         {% endfor %}
     </ul>
     <script src="{{ url_for('static', filename='js/listings.js') }}"></script>
+</div>
 </body>
 </html>
