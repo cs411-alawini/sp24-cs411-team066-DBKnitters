@@ -9,7 +9,7 @@
     
     <div id="login-form">
         <h2>Login</h2>
-        <form>
+        <form onsubmit = 'return handleLogin();'>
             <input type="text" id="login-username" placeholder="Username" required>
             <input type="password" id="login-password" placeholder="Password" required>
             <select name="type" id="login-type">

@@ -39,15 +39,18 @@
       
         <button type="submit">Search and Filter</button>
     </form>
+    <br>
+
     <ul id = "listings-container">
         {% for listing in listings %}
             <!-- <li> -->
             <li class = 'listing' data-id = "{{ listing.listing_id }}">
                 <h2>{{ listing['room_type'] }}</h2>
-                <p>Description: {{ listing['description'] }}</p>
-                <p>Rating: {{ listing['scores_rating'] }}</p>
-                <p>Price: ${{ listing['price'] }}</p>
-                <p>Available from: {{ listing['from_date'] }} to {{ listing['to_date'] }}</p>
+                <p><strong>Description: </strong>{{ listing['description'] }}</p>
+                <p><strong>Rating: </strong>{{ listing['scores_rating'] }}</p>
+                <p><strong>Price: </strong>${{ listing['price'] }}</p>
+                <p><strong>Available from: </strong>{{ listing['from_date'] }} to {{ listing['to_date'] }}</p>
+                <button onclick = "location.href = '/listings_detail/{{listing.listing_id}}'">View Details</button>
             </li>
         {% endfor %}
     </ul>
