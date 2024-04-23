@@ -4,7 +4,7 @@ from datetime import datetime
 def get_top_listings():
     SQL_QUERY = """
     SELECT
-        li.listing_id, scores_rating, room_type, description, price, from_date, to_date
+        li.listing_id, scores_rating, room_type, description, price, from_date, to_date, li.image_url
     FROM
         Listing li
     JOIN
@@ -18,7 +18,7 @@ def get_top_listings():
 
 def get_filtered_listings(search_query, max_price, room_type, start_date, end_date, min_rating):
     SQL_QUERY = """
-    SELECT li.listing_id, room_type, description, price, from_date, to_date, scores_rating 
+    SELECT li.listing_id, room_type, description, price, from_date, to_date, scores_rating, li.image_url 
     FROM Listing li 
     JOIN Rating r ON li.listing_id = r.listing_id 
     WHERE 1=1"""
