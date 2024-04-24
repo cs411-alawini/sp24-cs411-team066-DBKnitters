@@ -46,6 +46,9 @@
                     <label><strong>Location:</strong></label>
                     <span>{{ listings_detail[0].longitude }}, {{ listings_detail[0].latitude }}</span>
                 </div>
+                <div class="form-row"></div>
+                    <img class="propertyImage" src="{{ listings_detail[0].image_url or url_for('static', filename='images/default_property.png') }}" alt="Property Image">
+                </div>
                 <div class="form-row">
                     <button id="apply-btn" class="form-btn">Apply</button>
                 </div>

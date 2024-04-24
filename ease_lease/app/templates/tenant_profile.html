@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tenant Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tenant_profile.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Top Properties</h1>
+            <div>
+                <!-- Search and other filters can go here -->
+            </div>
+        </header>
+
+        <section class="profile">
+            <h1>Welcome, <span id="firstName">{{ user_info['first_name'] }}</span> <span id="lastName">{{ user_info['last_name'] }}</span></h1>
+            <p><strong>ID:</strong> <span id="userId">{{ user_info['user_id'] }}</span></p>
+            <p><strong>Phone:</strong> <span id="phoneNumber">{{ user_info['phone_number'] }}</span></p>
+            <p><strong>Balance:</strong> <span id="accountBalance">${{ user_info['account_balance'] }}</span></p>
+        </section>
+
+        <section>
+            <h2>Reviews</h2>
+            <div id="reviews">
+                {% for review in reviews %}
+                    <article class="review">
+                        <h3>{{ review['reviewer_name'] }}</h3>
+                        <p>{{ review['content'] }}</p>
+                    </article>
+                {% else %}
+                    <p>No reviews found.</p>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+    <script src="{{ url_for('static', filename='js/tenant_profile.js') }}"></script>
+</body>
+</html>
