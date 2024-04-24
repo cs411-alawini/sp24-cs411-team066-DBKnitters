@@ -14,8 +14,8 @@ document.getElementById('search-filter-form').addEventListener('submit', functio
   function updateListings(listings) {
     const listingsContainer = document.getElementById('listings-container');
     listingsContainer.innerHTML = '';
-
     listings.forEach(listing => {
+      const imageUrl = listing.image_url ? listing.image_url : '/static/images/default_property.png';
       const listingElement = document.createElement('li');
       listingElement.innerHTML = `
         <h2>${listing.room_type}</h2>
@@ -23,6 +23,7 @@ document.getElementById('search-filter-form').addEventListener('submit', functio
         <p><strong>Rating: </strong>${listing.scores_rating}</p>
         <p><strong>Price: </strong>$${listing.price}</p>
         <p><strong>Available from: </strong>${listing.from_date} to ${listing.to_date}</p>
+        <img class="propertyImage" src="${imageUrl}" alt="Property Image">
         <button onclick = 'viewDetails(${listing.listing_id})'>View Details</button>
     `;
       listingsContainer.appendChild(listingElement);

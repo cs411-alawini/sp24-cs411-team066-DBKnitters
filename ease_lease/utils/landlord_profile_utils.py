@@ -17,7 +17,7 @@ def get_landlord_profile(user_id):
 def get_landlord_listings(host_id):
     SQL_QUERY = """
     SELECT
-        li.listing_id, room_type, description, price, from_date, to_date, scores_rating
+        li.listing_id, room_type, description, price, from_date, to_date, scores_rating, li.image_url
     FROM
         Listing li
     JOIN
