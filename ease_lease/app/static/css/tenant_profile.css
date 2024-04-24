@@ -8,7 +8,7 @@ body {
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin: auto;
-    padding: 20px;
+    padding: 100px;
     max-width: 960px;
 }
 header {
@@ -43,5 +43,21 @@ header {
     margin-top: 0;
 }
 .review p {
+    margin: 5px 0;
+}
+.application {
+    border: 1px solid #eaeaea;
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+.application:last-child {
+    margin-bottom: 0;
+}
+.application h3 {
+    margin-top: 0;
+}
+.application p {
     margin: 5px 0;
 }

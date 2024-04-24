@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Tenant Profile</title>
+    <script src="../js/tenant_profile.js" defer></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/tenant_profile.css') }}">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Top Properties</h1>
+            <h1>My Profile</h1>
+            <img id="pokemonImage" src="" alt="Random Pokémon">
             <div>
                 <!-- Search and other filters can go here -->
             </div>
@@ -22,7 +24,7 @@
         </section>
 
         <section>
-            <h2>Reviews</h2>
+            <h2>My Reviews</h2>
             <div id="reviews">
                 {% for review in reviews %}
                     <article class="review">
@@ -32,6 +34,22 @@
                 {% else %}
                     <p>No reviews found.</p>
                 {% endfor %}
+            </div>
+        </section>
+
+        <section>
+            <h2>My Applications</h2>
+            <div id="applications">
+                {%for application in applications%}
+                <article class="application">
+                    <h3>{{ application['room_type'] }}</h3>
+                    <p><strong>Description: </strong>{{ application['description'] }}</p>
+                    <p><strong>Price: </strong>${{ application['price'] }}</p>
+                    <p><strong>Status: </strong>{{ application['status'] }}</p>
+                {% else %}
+                    <p>Book your next trip now!</p>
+                {% endfor %}
+                </article>
             </div>
         </section>
     </div>

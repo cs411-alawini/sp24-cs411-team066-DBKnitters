@@ -9,8 +9,7 @@ def get_user_profile_with_balance(user_id):
     LEFT JOIN Tenant t ON u.user_id = t.user_id
     WHERE u.user_id = %s
     """
-    result = execute_query(SQL_QUERY, (user_id,))
-    return result
+    return execute_query(SQL_QUERY, (user_id,))
 
 def get_user_reviews(user_id):
     SQL_QUERY = """
@@ -23,5 +22,16 @@ def get_user_reviews(user_id):
     """
     return execute_query(SQL_QUERY, (user_id,))
 
-
+def get_user_applications(user_id):
+    SQL_QUERY = """
+    SELECT 
+            l.description, l.room_type, l.price, a.status 
+        FROM 
+            `Listing` l 
+        JOIN 
+            `Application` a ON l.listing_id = a.listing_id
+        WHERE
+            a.tenant_id = %s
+    """
+    return execute_query(SQL_QUERY, (user_id,))
 
