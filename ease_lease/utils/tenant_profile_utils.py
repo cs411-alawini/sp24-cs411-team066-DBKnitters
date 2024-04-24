@@ -23,5 +23,28 @@ def get_user_reviews(user_id):
     """
     return execute_query(SQL_QUERY, (user_id,))
 
+def get_user_applications(user_id):
+    SQL_QUERY = """
+    SELECT
+        A.application_id, A.status, L.room_type, L.from_date, L.to_date
+    FROM
+        Application AS A
+    LEFT JOIN
+        Listing AS L
+    ON
+        A.listing_id = L.listing_id
+    WHERE
+        A.tenant_id = %s
+    """
+    return execute_query(SQL_QUERY, (user_id,))
 
+def withdraw_application(application_id):
+    SQL_QUERY = """
+    DELETE 
+    FROM 
+        Application
+    WHERE
+        application_id = %s
+    """
+    return execute_query(SQL_QUERY, (application_id,))
 

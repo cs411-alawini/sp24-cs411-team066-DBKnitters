@@ -20,6 +20,27 @@
             <p><strong>Phone:</strong> <span id="phoneNumber">{{ user_info['phone_number'] }}</span></p>
             <p><strong>Balance:</strong> <span id="accountBalance">${{ user_info['account_balance'] }}</span></p>
         </section>
+        
+        <section>
+            <h2>Applications</h2>
+            <div id = "applications-container">
+                {% if applications %}
+                    <ul>
+                        {% for application in applications %}
+                            <li class = 'application' data-id = "{{application.application_id}}">
+                                <div><strong>Status: </strong>{{ application.status }}</div>
+                                <div><strong>Room Type: </strong>{{ application.room_type}}</div>
+                                <div><strong>From Date: </strong>{{ application.from_date}}</div>
+                                <div><strong>To Date: </strong>{{ application.to_date}}</div>
+                                <button class = 'withdraw-btn' onclick = "withdrawApplication('{{ application.application_id }}')">Withdraw</button>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>You have no applications now.</p>
+                {% endif %}
+            </div>
+        </section>
 
         <section>
             <h2>Reviews</h2>
