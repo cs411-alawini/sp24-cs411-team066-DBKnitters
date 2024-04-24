@@ -150,3 +150,18 @@ def execute_query(query, params=None):
 # END$$ -- End of the labeled block
 
 # DELIMITER ;
+
+
+# Trigger for accrodingly withdraw any bidding record when delete the application
+
+# DELIMITER $$
+
+# CREATE TRIGGER after_application_delete
+# AFTER DELETE ON Application
+# FOR EACH ROW
+# BEGIN
+#     DELETE FROM Bidding
+#     WHERE listing_id = OLD.listing_id AND tenant_id = OLD.tenant_id;
+# END $$
+
+# DELIMITER ;
