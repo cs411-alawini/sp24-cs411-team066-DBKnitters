@@ -26,16 +26,24 @@
         </section>
         <section id="listings">
             <h2>Listings</h2>
-            <ul id = "listings-container">
+            <ul id="listings-container">
                 {% for listing in landlord_listings %}
                 <li class="listing">
-                    <!-- <p>Listing ID: {{ listing.listing_id }}</p> -->
                     <p>Room Type: {{ listing.room_type }}</p>
                     <p>Description: {{ listing.description }}</p>
                     <p>Price: ${{ listing.price }}</p>
                     <p>Rating: {{ listing.scores_rating }}</p>
                     <p>From Date: {{ listing.from_date }}</p>
                     <p>To Date: {{ listing.to_date }}</p>
+                    <img class="propertyImage" src="{{ listing.image_url or url_for('static', filename='images/default_property.png') }}" alt="Property Image">
+                    <form class="uploadForm" data-listing-id="{{ listing.listing_id }}">
+                        <input type="file" name="image" accept="image/*" required>
+                        <button type="submit">Upload Image</button>
+                    </form>
+                    <div class="imageContainer" style="display: none;">
+                        <h4>Enhanced Image:</h4>
+                        <img class="enhancedImage" src="" alt="Enhanced Image">
+                    </div>
                 </li>
                 {% endfor %}
             </ul>
