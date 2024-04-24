@@ -50,6 +50,7 @@
                 <p><strong>Rating: </strong>{{ listing['scores_rating'] }}</p>
                 <p><strong>Price: </strong>${{ listing['price'] }}</p>
                 <p><strong>Available from: </strong>{{ listing['from_date'] }} to {{ listing['to_date'] }}</p>
+                <img class="propertyImage" src="{{ listing.image_url or url_for('static', filename='images/default_property.png') }}" alt="Property Image">
                 <button onclick = "location.href = '/listings_detail/{{listing.listing_id}}'">View Details</button>
             </li>
         {% endfor %}
