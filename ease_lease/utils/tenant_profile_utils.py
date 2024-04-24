@@ -46,16 +46,5 @@ def withdraw_application(application_id):
         application_id = %s
     """
     return execute_query(SQL_QUERY, (application_id,))
-def get_user_applications(user_id):
-    SQL_QUERY = """
-    SELECT 
-            l.description, l.room_type, l.price, a.status 
-        FROM 
-            `Listing` l 
-        JOIN 
-            `Application` a ON l.listing_id = a.listing_id
-        WHERE
-            a.tenant_id = %s
-    """
-    return execute_query(SQL_QUERY, (user_id,))
+
 

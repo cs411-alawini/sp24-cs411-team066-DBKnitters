@@ -45,6 +45,21 @@ header {
 .review p {
     margin: 5px 0;
 }
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #2f5f9a9b;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #215f9d9a;
+}
 .application {
     border: 1px solid #eaeaea;
     background-color: #f9f9f9;

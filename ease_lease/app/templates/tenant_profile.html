@@ -24,7 +24,7 @@
         </section>
         
         <section>
-            <h2>Applications</h2>
+            <h2>My applications</h2>
             <div id = "applications-container">
                 {% if applications %}
                     <ul>
@@ -39,7 +39,7 @@
                         {% endfor %}
                     </ul>
                 {% else %}
-                    <p>You have no applications now.</p>
+                    <p>Book your next trip now!</p>
                 {% endif %}
             </div>
         </section>
@@ -53,24 +53,9 @@
                         <p>{{ review['content'] }}</p>
                     </article>
                 {% else %}
-                    <p>No reviews found.</p>
+                    <p>You have no review now.</p>
+                    <a href="/listings" class="btn">Go to Listings</a>
                 {% endfor %}
-            </div>
-        </section>
-
-        <section>
-            <h2>My Applications</h2>
-            <div id="applications">
-                {%for application in applications%}
-                <article class="application">
-                    <h3>{{ application['room_type'] }}</h3>
-                    <p><strong>Description: </strong>{{ application['description'] }}</p>
-                    <p><strong>Price: </strong>${{ application['price'] }}</p>
-                    <p><strong>Status: </strong>{{ application['status'] }}</p>
-                {% else %}
-                    <p>Book your next trip now!</p>
-                {% endfor %}
-                </article>
             </div>
         </section>
     </div>
