@@ -68,3 +68,39 @@ button {
 button:hover {
     background-color: #215f9d9a;
 }
+
+
+/* Style for the applications section container */
+#applications {
+    padding: 0; 
+    box-shadow: none; 
+    background-color: transparent;
+}
+/* Style for each application div */
+.application {
+    margin-bottom: 10px; 
+    padding: 10px; 
+    border: none;
+    background-color: #f9f9f9; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+/* Style for the ul that wraps applications */
+#applications-container {
+    margin-top: 0; 
+    padding-top: 0; 
+    list-style-type: none; 
+}
+
+/* Style for each application detail paragraph */
+.application p {
+    margin: 5px 0; 
+}
+
+/* This targets the h2 specifically in the applications section to remove bottom margin */
+#applications h2 {
+    margin-bottom: 10px;
+    padding-bottom: 0;
+    border-bottom: none; 
+}
+
