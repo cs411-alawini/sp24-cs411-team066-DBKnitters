@@ -1,0 +1,80 @@
+/* index.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+h1 {
+    text-align: center; 
+}
+
+
+.container, #login-form, #register-form {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    padding: 20px;
+    max-width: 960px;
+    border-radius: 4px;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #2f5f9a9b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #215f9d9a;
+}
+
+form {
+    border-radius: 4px;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+input[type="phone-number"], input[type="first-name"], input[type="last-name"] {
+    /* Ensure custom input types fall back to text */
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* styles for login and register form elements */
+#login-form input,
+#login-form select,
+#register-form input {
+    max-width: 33%; 
+    display: block; 
+    margin: 10px auto; 
+}
+
+#login-form,
+#register-form {
+    text-align: center;
+}
+
+button {
+    max-width: 33%;
+    display: block;
+    margin: 10px auto;
+}

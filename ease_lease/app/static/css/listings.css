@@ -79,3 +79,35 @@ p {
     color: #333;
     line-height: 1.6;
 }
+
+/* listings.css - Styles for the search and filter form */
+.search-filter-form {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap; /* This allows the form to wrap on smaller screens */
+    padding: 10px;
+    background-color: #f7f7f7;
+}
+
+.search-field {
+    flex: 1;
+    min-width: 120px; /* Adjust minimum width as needed */
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-btn {
+    padding: 5px 10px;
+    background-color: #2f5f9a9b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.search-btn:hover {
+    background-color: #215f9d9a;
+}

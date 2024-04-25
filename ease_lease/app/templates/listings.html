@@ -14,31 +14,21 @@
     </nav>
     <div class="main-content">
     <h1>Top Properties</h1>
-    <form id="search-filter-form">
-        <label for="search_input">Search:</label>
-        <input type="text" id="search_input" name="search_input" placeholder="Search Listings">
-        <label for="max_price">Maximum Price:</label>
-        <input type="number" id="max_price" name="max_price">
-      
-        <label for="room_type">Room Type:</label>
-        <select id="room_type" name="room_type">
+    <form id="search-filter-form" class="search-filter-form">
+        <input type="text" id="search_input" name="search_input" placeholder="Search Listings" class="search-field">
+        <input type="number" id="max_price" name="max_price" placeholder="Maximum Price" class="search-field">
+        <select id="room_type" name="room_type" class="search-field">
           <option value="Private room">Private room</option>
           <option value="Entire home/apt">Entire home/apt</option>
           <option value="Shared room">Shared room</option>
           <option value="Hotel room">Hotel room</option>
         </select>
-      
-        <label for="start_date">Start Date:</label>
-        <input type="date" id="start_date" name="start_date">
-      
-        <label for="end_date">End Date:</label>
-        <input type="date" id="end_date" name="end_date">
-
-        <label for="min_rating">Minimum Rating:</label>
-        <input type="number" id="min_rating" name="min_rating">
-      
-        <button type="submit">Search and Filter</button>
+        <input type="date" id="start_date" name="start_date" class="search-field">
+        <input type="date" id="end_date" name="end_date" class="search-field">
+        <input type="number" id="min_rating" name="min_rating" placeholder="Minimum Rating" class="search-field">
+        <button type="submit" class="search-btn">Search and Filter</button>
     </form>
+    
     <br>
 
     <ul id = "listings-container">
