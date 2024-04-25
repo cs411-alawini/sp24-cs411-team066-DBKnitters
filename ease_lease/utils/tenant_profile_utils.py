@@ -9,8 +9,7 @@ def get_user_profile_with_balance(user_id):
     LEFT JOIN Tenant t ON u.user_id = t.user_id
     WHERE u.user_id = %s
     """
-    result = execute_query(SQL_QUERY, (user_id,))
-    return result
+    return execute_query(SQL_QUERY, (user_id,))
 
 def get_user_reviews(user_id):
     SQL_QUERY = """
@@ -47,4 +46,5 @@ def withdraw_application(application_id):
         application_id = %s
     """
     return execute_query(SQL_QUERY, (application_id,))
+
 
