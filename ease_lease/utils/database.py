@@ -21,6 +21,8 @@ def execute_query(query, params=None):
 
 
 #stored procedure for inserting data into applicaton and bidding
+#SHOW PROCEDURE STATUS WHERE Db = 'ease_lease';
+
 # DELIMITER $$
 
 # CREATE PROCEDURE `submit_application_and_bid`(
@@ -153,6 +155,7 @@ def execute_query(query, params=None):
 
 
 # Trigger for accrodingly withdraw any bidding record when delete the application
+#SHOW TRIGGERS FROM ease_lease;
 
 # DELIMITER $$
 
