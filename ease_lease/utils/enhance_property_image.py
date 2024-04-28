@@ -84,7 +84,7 @@ def upload_image_to_gcs(listing_id, enhanced_image_bytes, bucket_name, destinati
     except Exception as e:
         print("Failed to upload the file:", e)
         return None
-    image_url = blob.public_url
+    image_url = blob.public_url + "?ignoreCache=1"
     update_listings_db(listing_id, image_url)
     return image_url
 
