@@ -1,4 +1,4 @@
-# team066-DBKnitters
+# Team066-DBKnitters
 
 ## About Project
 EaseLease is a transformative online subletting platform created by UIUC students to address the unique housing challenges of university graduate programs. It aims to simplify the process of finding and managing short-term leases, thereby filling a void in the traditional rental market. 
