@@ -30,14 +30,19 @@ PS. Our database is managed on Google Cloud Platform (GCP).
 
 ## User Interface
 ### [Login & Register Page](https://github.com/cs411-alawini/sp24-cs411-team066-DBKnitters/tree/main/doc/UI_Screenshots/Login_Page.png)
+![Login_Page.png](doc%2FUI_Screenshots%2FLogin_Page.png)
 
 ### [Search Listings Page](https://github.com/cs411-alawini/sp24-cs411-team066-DBKnitters/tree/main/doc/UI_Screenshots/Search_listing_Page.png)
+![Search_listing_Page.png](doc%2FUI_Screenshots%2FSearch_listing_Page.png)
 
 ### [Listing Detail Page](https://github.com/cs411-alawini/sp24-cs411-team066-DBKnitters/tree/main/doc/UI_Screenshots/Listing_detail_Page.png)
+![Listing_detail_Page.png](doc%2FUI_Screenshots%2FListing_detail_Page.png)
 
 ### [Tenant Profile Page](https://github.com/cs411-alawini/sp24-cs411-team066-DBKnitters/tree/main/doc/UI_Screenshots/Tenant_profile_Page.png)
+![Tenant_profile_Page.png](doc%2FUI_Screenshots%2FTenant_profile_Page.png)
 
 ### [Landlord Profile Page](https://github.com/cs411-alawini/sp24-cs411-team066-DBKnitters/tree/main/doc/UI_Screenshots/Landlord_profile_Page.png)
+![Landlord_profile_Page.png](doc%2FUI_Screenshots%2FLandlord_profile_Page.png)
 
 
 ## Advanced Database Program
